@@ -102,7 +102,7 @@ int main(void)
     }
 
     fp = fopen("index.html","r");
- 
+
     if(fp == NULL) {
       perror("Error while opening the file.\n");
       exit(EXIT_FAILURE);
@@ -110,18 +110,18 @@ int main(void)
 
     fseek(fp, 0L, SEEK_END);
     numbytes = ftell(fp);
-    fseek(fp, 0L, SEEK_SET);	
+    fseek(fp, 0L, SEEK_SET);
 
     if(numbytes > MAX_CONTENT_LENGTH) {
       fprintf(stderr, "server: content is longer than maximum size %d\n", MAX_CONTENT_LENGTH);
     }
 
     hdrbytes = MAX_HEADERS_LENGTH;
-    buffer = (char*)calloc(hdrbytes + numbytes, sizeof(char));	
+    buffer = (char*)calloc(hdrbytes + numbytes, sizeof(char));
     if(buffer == NULL) {
         return 1;
     }
-     
+
     hdrbytes = sprintf(buffer, HEADERS, numbytes);
     fread(buffer + hdrbytes, sizeof(char), numbytes, fp);
     fclose(fp);
