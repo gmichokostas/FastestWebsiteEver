@@ -7,8 +7,10 @@ import (
 	"os"
 )
 
-var port = "80"
-var hdrs = "HTTP/1.1 200 k\nContent-Length: %d\ncontent-encoding: deflate\n\n"
+var (
+	port = "80"
+	hdrs = "HTTP/1.1 200 k\nContent-Length: %d\ncontent-encoding: deflate\n\n"
+)
 
 func checkError(err error) bool {
 	if err != nil {
